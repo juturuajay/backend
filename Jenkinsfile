@@ -28,12 +28,13 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Deploy') {
-            when {
-                expression { env.GIT_BRANCH == "origin/main" }
-            }
+        stage('Docker Build') {
+            
             steps {
-                echo 'Deploying'
+                sh """
+                docker build -t ajayreddyj/backend:${appVersion}
+                docker images
+                """
                 //error "pipeline failure"
             }
         }
