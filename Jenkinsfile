@@ -32,7 +32,7 @@ pipeline {
             
             steps {
                 sh """
-                docker build -t ajayreddyj/backend:${appVersion}
+                docker build -t ajayreddyj/backend:${appVersion} .
                 docker images
                 """
                 //error "pipeline failure"
